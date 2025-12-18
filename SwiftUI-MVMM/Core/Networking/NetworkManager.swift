@@ -23,7 +23,7 @@ actor NetworkManager: NetworkManagerProtocol {
         let request = AF.request(
             url,
             method: endpoint.method,
-            parameters: endpoint.paramters,
+            parameters: endpoint.parameters,
             encoding: endpoint.encoding,
             headers: endpoint.headers
         ).validate()
