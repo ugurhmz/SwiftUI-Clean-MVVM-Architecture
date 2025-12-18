@@ -8,16 +8,16 @@
 import Foundation
 import Alamofire
 
-protocol EndPointProtocol {
+protocol EndpointProtocol {
     var baseURL: String { get }
     var path: String { get }
     var method: HTTPMethod { get }
-    var headers: HTTPHeader? { get }
+    var headers: HTTPHeaders? { get }
     var paramters: Parameters? { get }
     var encoding: ParameterEncoding { get }
 }
 
-extension EndPointProtocol {
+extension EndpointProtocol {
     var baseURL: String {
         return APIConstants.baseURL
     }
