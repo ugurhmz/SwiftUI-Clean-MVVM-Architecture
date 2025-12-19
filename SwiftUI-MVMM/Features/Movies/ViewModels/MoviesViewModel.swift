@@ -39,7 +39,7 @@ class MoviesViewModel: ObservableObject {
         do {
             let rawData = try await service.fetchMovies(page: currentPage)
             
-            let cleanData = rawData.map { $0.toDto(response: $0) }
+            let cleanData = rawData.map { $0.toDto }
             
             if cleanData.isEmpty {
                 canLoadMore = false

@@ -45,10 +45,4 @@ struct MovieResponseModel: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-    
-    
-    var fullPosterURL: URL? {
-        guard let posterPath = posterPath else{ return nil}
-        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
-    }
 }

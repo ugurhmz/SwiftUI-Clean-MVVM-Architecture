@@ -59,14 +59,3 @@ struct MovieRowView: View {
             
     }
 }
-
-#Preview {
-    MovieRowView(movieDto: MovieDTO(
-        id: 425274,
-        title: "Now You See Me: Now You Don't",
-        overview: "The original Four Horsemen reunite with a new generation of illusionists to take on powerful diamond heiress Veronika Vanderberg.",
-        posterURL: URL(string: "https://image.tmdb.org/t/p/w500/oD3Eey4e4Z259XLm3eD3WGcoJAh.jpg"),
-        ratingFormatted: "6.3",
-        releaseYear: "2025"
-    ))
-}

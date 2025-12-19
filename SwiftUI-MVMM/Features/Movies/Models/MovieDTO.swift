@@ -11,7 +11,14 @@ struct MovieDTO: Identifiable, Hashable {
     let id: Int
     let title: String
     let overview: String
-    let posterURL: URL?
+    let posterPath: String?
     let ratingFormatted: String
     let releaseYear: String
+
+    var posterURL: URL? {
+        guard let path = posterPath else { return nil }
+        let cleanPath = path.hasPrefix("/") ? String(path.dropFirst()) : path
+        return URL(string: "\(APIConstants.imageBaseURL)/\(cleanPath)")
+    }
 }
+

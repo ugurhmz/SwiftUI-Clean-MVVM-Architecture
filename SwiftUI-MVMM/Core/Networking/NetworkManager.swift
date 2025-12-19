@@ -29,7 +29,6 @@ actor NetworkManager: NetworkManagerProtocol {
         ).validate()
         
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         let dataTask = request.serializingDecodable(T.self, decoder: decoder)
         let response = await dataTask.response

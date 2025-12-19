@@ -8,14 +8,16 @@
 import Foundation
 
 extension MovieResponseModel {
-    func toDto(response: MovieResponseModel) -> MovieDTO {
-        let val = response.voteAverage ?? 0.0
+    var toDto: MovieDTO {
         
-        return MovieDTO(id: response.id ?? 0,
-                        title: response.title ?? "-",
-                        overview: response.overview ?? "-",
-                        posterURL: response.fullPosterURL ?? URL(string: ""),
-                        ratingFormatted: String(format: "⭐️ %.1f", val),
-                        releaseYear: response.releaseDate ?? "-")
+        let val = self.voteAverage ?? 0.0
+        let formattedRating = String(format: "%.1f", val)
+        
+        return MovieDTO(id: self.id ?? 0,
+                        title: self.title ?? "No Name Movie",
+                        overview: self.overview ?? "No desc.",
+                        posterPath: self.posterPath,
+                        ratingFormatted: formattedRating,
+                        releaseYear: self.releaseDate ?? "00.00.1994")
     }
 }
