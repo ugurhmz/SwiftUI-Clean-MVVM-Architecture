@@ -6,16 +6,21 @@ Proje geliştirilirken **Clean Architecture**, **MVVM (Model-View-ViewModel)** d
 
 ## 🏗 Mimari ve Tasarım Desenleri
 
-Proje, sorumlulukların net bir şekilde ayrıldığı (Separation of Concerns) katmanlı bir yapıya sahiptir:
+Bu projemiz Separation of Concerns prensibiyle tasarlanmış, ölçeklenebilir iOS film uygulamasıdır. Karmaşıklığı yönetmek ve modüler büyümeyi (örn: TV Series, Cast entegrasyonları) desteklemek amacıyla Feature-Based klasörleme yapısı ve katmanlı mimari (Clean Architecture & MVVM) kullanılarak geliştirilmiştir.
 
-* **MVVM (Model-View-ViewModel):** UI ve İş mantığı (Business Logic) birbirinden tamamen ayrılmıştır.
-* **Protocol-Oriented Network Layer:** Ağ katmanı, test edilebilir ve mocklanabilir `Protocol` yapıları üzerine kurulmuştur.
-* **DTO (Data Transfer Object) Pattern:** API'den gelen ham veri (`ResponseModel`) ile UI'ın ihtiyaç duyduğu veri (`MovieDTO`) birbirinden ayrılmış, arada bir **Mapper** katmanı kullanılmıştır.
-* **Dependency Injection:** Servisler ve ViewModel'ler, dışarıdan enjekte edilebilir şekilde tasarlanmıştır.
+- MVVM (Model–View–ViewModel)
+- Dependency Injection (Bağımlılık Enjeksiyonu)
+- Repository / Service Pattern
+- DTO (Data Transfer Object) & Mapper Pattern
+- Router / Endpoint Pattern (Protocol-Oriented Networking)
+- Observer Pattern
+- Adapter / Wrapper Pattern
+- Actor Model (Concurrency)
 
 ### Veri Akış Şeması
+<img width="1536" height="1024" alt="flowdata" src="https://github.com/user-attachments/assets/157d4eeb-9c67-4ed9-b3e3-eb9b41333577" />
 
-`API (JSON) -> ResponseModel -> Mapper -> MovieDTO -> ViewModel -> View`
+
 
 ## 📂 Klasör Yapısı (Folder Structure)
 
@@ -71,13 +76,14 @@ SwiftUI-MVMM
 * **Error Handling:** Kullanıcı dostu hata mesajları ve "Tekrar Dene" mekanizması.
 
 ## 🛠 Kullanılan Teknolojiler
-
 * **Dil:** Swift 5
-* **UI Framework:** SwiftUI
+* **UI Framework:** SwiftUI (NavigationStack)
 * **Minimum Target:** iOS 16.0
-* **Networking:** Alamofire & Async/Await
-* **Image Loading:** Kingfisher
+* **Networking:** Alamofire & Async/Await (Generic Network Layer)
+* **Image Loading:** Kingfisher (Disk & Memory Cache)
+* **Architecture:** MVVM (Feature-Based & Protocol-Oriented)
 * **Concurrency:** Swift Concurrency (Task, Actor, MainActor)
+* **Data Format:** JSON (Codable / Decodable)
 
 ## 🔒 Kurulum ve Güvenlik (Önemli)
 
