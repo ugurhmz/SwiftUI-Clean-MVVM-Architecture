@@ -23,34 +23,42 @@ Proje, "Feature-Based" (Özellik Bazlı) bir klasörleme yapısına sahiptir. Bu
 
 ```text
 SwiftUI-MVMM
-├── Core
-│   ├── Constants
-│   │   └── APIConstants.swift    # Base URL ve Secure Token yönetimi
-│   └── Extensions
-│       └── ...
-├── Features
-│   └── Movies
-│       ├── Models
-│       │   ├── MovieDTO.swift    # UI katmanı için temizlenmiş model
-│       │   └── MovieMapper.swift # Response -> DTO dönüşüm katmanı
-│       ├── ViewModels
-│       │   └── MoviesViewModel.swift # State yönetimi ve Pagination lojiği
-│       ├── Views
-│       │   ├── Components
-│       │   │   ├── MovieRowView.swift      # Liste elemanı tasarımı
-│       │   │   ├── MoviePosterView.swift   # Kingfisher destekli resim bileşeni
-│       │   │   └── MovieFooterLoader.swift # Sonsuz kaydırma yükleyicisi
-│       │   └── MovieListView.swift         # Ana liste ekranı
-│       └── Services
-│           └── MovieService.swift # Film özelindeki API çağrıları
-├── Services (Network Layer)
-│   ├── NetworkManager.swift       # Generic Network Request yapısı (Alamofire)
-│   ├── EndpointProtocol.swift     # URL yönetimi için Protocol
-│   ├── NetworkError.swift         # Hata yönetimi
-│   └── Models
-│       └── MovieResponseModel.swift # API'den dönen ham veri (Codable)
-└── Application
-    └── SwiftUI_MVMMApp.swift
+├── Secrets.xcconfig               # API Key'lerin saklandığı gizli dosya
+├── SwiftUI-MVMM
+│   ├── App
+│   │   ├── Assets.xcassets        # Görsel materyaller ve renkler
+│   │   └── SwiftUI_MVMMApp.swift  # Uygulama giriş noktası (@main)
+│   │
+│   ├── Core                       # Uygulamanın genel çekirdek yapıları
+│   │   ├── Constants
+│   │   │   └── APIConstants.swift # Base URL ve Token yönetimi
+│   │   └── Networking             # Ağ katmanı
+│   │       ├── EndpointProtocol.swift
+│   │       ├── NetworkError.swift
+│   │       └── NetworkManager.swift
+│   │
+│   ├── Data                       # Ham veri katmanı
+│   │   ├── Models
+│   │   │   └── MovieResponseModel.swift # Backend'den gelen ham JSON modeli
+│   │   └── MoviesEndpoint.swift   # API Endpoint tanımları
+│   │
+│   └── Features                   # Özellik bazlı modüller (Scalable Part)
+│       └── Movies
+│           ├── Mappers            # Data -> Domain dönüşümü
+│           │   └── MovieMapper.swift
+│           ├── Models             # UI için optimize edilmiş DTO'lar
+│           │   └── MovieDTO.swift
+│           ├── ViewModels         # Business Logic & State Management
+│           │   └── MoviesViewModel.swift
+│           ├── Views              # UI Katmanı
+│           │   ├── Components     # Parçalanmış UI bileşenleri
+│           │   │   ├── MoviePosterView.swift
+│           │   │   └── MovieRowView.swift
+│           │   └── MovieListView.swift
+│           └── Services           # Feature'a özel servis çağrıları
+│               └── MovieService.swift
+│
+└── Info.plist
 
 ```
 
